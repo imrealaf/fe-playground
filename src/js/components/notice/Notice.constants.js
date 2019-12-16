@@ -9,7 +9,7 @@ export const className = {
 
 export const selector = {
   root: `.${className.root}`,
-  dismiss: `[data-dismiss="${config.namespace}-${componentName}"]`,
+  dismiss: `[data-dismiss="${componentName}"]`,
   bottomSheet: `.${config.namespace}-bottom-sheet`
 };
 

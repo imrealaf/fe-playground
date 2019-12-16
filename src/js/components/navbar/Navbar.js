@@ -1,3 +1,4 @@
+import device from "current-device";
 import domState from "../../constants/domState";
 import theme from "../../constants/theme";
 import { exists } from "../../utils/domElement";
@@ -52,7 +53,7 @@ class Navbar {
       this.adjustForNotice();
     }
 
-    if (this.props.watchSticky) {
+    if (this.props.watchSticky && device.desktop()) {
       if (this.isTransparent() && this.element.bgTrigger) {
         this.checkBg();
         this.watchBg();

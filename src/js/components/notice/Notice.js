@@ -46,10 +46,7 @@ class Notice {
   injectCloseButton() {
     this.element.close = document.createElement("div");
     this.element.close.className = `${className.close} close-${this.theme}`;
-    this.element.close.setAttribute(
-      "data-dismiss",
-      `${config.namespace}-${componentName}`
-    );
+    this.element.close.setAttribute("data-dismiss", componentName);
     this.element.root.appendChild(this.element.close);
   }
 

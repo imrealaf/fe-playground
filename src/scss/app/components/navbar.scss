@@ -75,6 +75,8 @@ $navbar-light-color-hover: $gray-500;
   }
 
   .navbar_menu_link {
+    background: transparent;
+    border: none;
     display: inline-flex;
     align-items: center;
     padding: $gutter/4;
@@ -92,6 +94,10 @@ $navbar-light-color-hover: $gray-500;
       &.no-hover {
         opacity: 1;
       }
+    }
+
+    &:focus {
+      outline: 0;
     }
   }
 

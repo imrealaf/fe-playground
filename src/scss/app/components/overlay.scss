@@ -1,4 +1,5 @@
 $overlay-opacity: (
+  0: 0,
   1: 0.1,
   2: 0.2,
   3: 0.3,
@@ -10,13 +11,8 @@ $overlay-opacity: (
   9: 0.9
 );
 $overlay-opacity-default: map-get($overlay-opacity, 7);
-
-$overlay-themes: (
-  light: $white,
-  dark: $black
-);
-
 $overlay-z-index: 10;
+$overlay-transition: all 0.3s ease;
 
 .af-overlay {
   position: absolute;
@@ -27,19 +23,39 @@ $overlay-z-index: 10;
   opacity: $overlay-opacity-default;
   z-index: $overlay-z-index;
 
+  // Fixed overlay
   &.overlay-fixed {
     position: fixed;
+    z-index: $zindex-overlay;
   }
 
-  @each $theme in map-keys($overlay-themes) {
+  // Transition
+  &.has-transition {
+    transition: $overlay-transition;
+  }
+
+  @each $theme in $themes {
     &.overlay-#{$theme} {
-      background: map-get($overlay-themes, $theme);
+      background: map-get($theme-bg, $theme);
     }
   }
 
   @each $opacity in map-keys($overlay-opacity) {
-    &.overlay-#{$opacity} {
+    &.overlay-#{$opacity}:not(.has-transition) {
       opacity: map-get($overlay-opacity, $opacity);
+    }
+
+    &.overlay-#{$opacity}.has-transition {
+      opacity: 0;
+
+      &.is-transition-in {
+        opacity: map-get($overlay-opacity, $opacity);
+
+        &.is-transition-out {
+          opacity: 0;
+          transition: $overlay-transition 0.1s;
+        }
+      }
     }
   }
 }

@@ -11,7 +11,6 @@ $bottom-sheet-zindex: 100;
   height: $bottom-sheet-height;
   left: 0;
   bottom: 0;
-  background: $bottom-sheet-bg;
   z-index: $bottom-sheet-zindex;
 
   .bottom_sheet_link {
@@ -22,5 +21,13 @@ $bottom-sheet-zindex: 100;
     border: none;
     height: 100%;
     width: $bottom-sheet-height;
+  }
+
+  // Theme
+  @each $theme in $themes {
+    &.bottom-sheet-#{$theme} {
+      background: map-get($theme-bg, $theme);
+      color: map-get($theme-color, $theme);
+    }
   }
 }

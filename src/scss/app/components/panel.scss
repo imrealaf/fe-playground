@@ -1,0 +1,198 @@
+/**
+ *
+ *	Panel
+ * 	@author Andrew Faria
+ *
+ */
+
+$panel-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+$panel-padding: $gutter;
+$panel-width: 300px;
+
+$panel-header-height: 70px;
+$panel-header-bg: #111;
+$panel-header-color: #333;
+$panel-header-align: center;
+
+$panel-item-font-size: 0.9rem;
+$panel-item-font: $primary-font;
+$panel-item-padding: $gutter/2 $gutter;
+$panel-item-color-active: $primary;
+
+$panel-transitions: ("left", "right");
+$panel-transitions-start: (
+  "left": -$panel-width,
+  "right": $panel-width
+);
+$panel-transitions-end: (
+  "left": 0,
+  "right": 0
+);
+
+.af-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  overflow: hidden;
+  z-index: $zindex-panel;
+
+  /* ----------------
+         Main elements
+     ----------------- */
+  .panel_content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: $zindex-panel;
+    transition: all 0.3s ease;
+  }
+
+  .panel_body {
+    width: 100%;
+    padding: $panel-padding;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    flex-direction: column;
+    transition: all 0.3s ease 0.15s;
+  }
+
+  .af-close {
+    position: absolute;
+    right: $gutter / 2;
+    top: $gutter / 2;
+    z-index: 50;
+
+    @each $theme in $themes {
+      &.close-#{$theme} {
+        &::after,
+        &::before {
+          background: map-get($theme-bg, $theme);
+        }
+      }
+    }
+  }
+
+  /* ----------------
+         Optional elements
+     ----------------- */
+  .panel_header {
+    height: $panel-header-height;
+    display: flex;
+    align-items: center;
+    text-align: $panel-header-align;
+    padding: 0 $panel-padding;
+    margin-bottom: $panel-padding/2;
+    transition: all 0.3s ease 0.15s;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      line-height: 1;
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+
+  /* ----------------
+         Theme
+     ----------------- */
+  @each $theme in $themes {
+    &.panel-#{$theme} {
+      .panel_content {
+        background: map-get($theme-bg, $theme);
+        box-shadow: map-get($theme-shadow, $theme);
+      }
+
+      .panel_body {
+        color: map-get($theme-color, $theme);
+      }
+    }
+  }
+
+  /* ----------------
+         Variations
+     ----------------- */
+
+  @each $position in $panel-transitions {
+    &.panel-#{$position} {
+      @if $position == "right" {
+        justify-content: flex-end;
+      }
+
+      .panel_content {
+        width: $panel-width;
+        height: 100%;
+        transform: translateX(map-get($panel-transitions-start, $position));
+      }
+
+      .panel_body {
+        transform: translateX(map-get($panel-transitions-start, $position) / 3);
+      }
+    }
+  }
+
+  /* ----------------
+         States
+     ----------------- */
+
+  &.is-active {
+    display: flex;
+  }
+
+  // In
+  &.is-transition-in {
+    .af-close,
+    .panel_body,
+    .panel_header {
+      opacity: 1;
+    }
+
+    @each $position in $panel-transitions {
+      &.panel-#{$position} {
+        .panel_content,
+        .panel_body {
+          transform: translateX(map-get($panel-transitions-end, $position));
+        }
+      }
+    }
+
+    &.is-transition-out {
+      .af-close,
+      .panel_body,
+      .panel_header {
+        opacity: 0;
+      }
+
+      @each $position in $panel-transitions {
+        &.panel-#{$position} {
+          .panel_content {
+            transform: translateX(map-get($panel-transitions-start, $position));
+          }
+
+          .panel_body {
+            transform: translateX(
+              map-get($panel-transitions-start, $position) / 3
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ----------------
+     Body styles
+ ----------------- */
+
+.panel-is-active {
+  overflow: hidden;
+}

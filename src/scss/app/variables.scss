@@ -20,48 +20,6 @@ $zindex-s2t: $zindex-overlay - 1;
 $zindex-fixed: $zindex-s2t - 1;
 
 /* --------------------------------
-    Close
------------------------------------ */
-
-$close-width: 22px;
-$close-height: $close-width;
-$close-bar-width: $close-width;
-$close-bar-height: 2px;
-$close-bar-bg: $black;
-$close-bar-bg-alt: $white;
-
-/* --------------------------------
-    Panel
------------------------------------ */
-
-$panel-bg: $black;
-$panel-color: $white;
-$panel-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-$panel-radius: 0;
-$panel-padding: $gutter;
-$panel-width: 500px;
-$panel-width-lg: 700px;
-$panel-width-sm: 300px;
-$panel-zindex: 1050;
-$panel-slide-distance: 75px;
-$panel-vertical-dimension: 100px;
-$panel-horizontal-dimension: 300px;
-
-$panel-header-height: 70px;
-$panel-header-bg: #111;
-$panel-header-color: #333;
-$panel-header-align: center;
-
-$panel-item-font-size: 0.9rem;
-$panel-item-font: $primary-font;
-$panel-item-padding: $gutter/2 $gutter;
-$panel-item-color: $panel-color;
-$panel-item-color-current: $primary;
-
-$panel-overlay-opacity: 0.5;
-$panel-overlay-bg: $white;
-
-/* --------------------------------
     Modal
 ----------------------------------- */
 
@@ -167,6 +125,10 @@ $theme-alt-bg: (
   light: $gray-200,
   dark: $gray-900
 );
+$theme-transparent-bg: (
+  light: rgba(255, 255, 255, 0.95),
+  dark: rgba(0, 0, 0, 0.95)
+);
 $theme-color: (
   light: $black,
   dark: $white
@@ -174,4 +136,8 @@ $theme-color: (
 $theme-alt-color: (
   light: $gray-800,
   dark: $gray-500
+);
+$theme-shadow: (
+  light: 0 0 20px rgba(0, 0, 0, 0.1),
+  dark: 0 0 20px rgba(0, 0, 0, 0.1)
 );
