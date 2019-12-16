@@ -1,0 +1,26 @@
+$bottom-sheet-height: $navbar-height + 10;
+$bottom-sheet-bg: rgba(0, 0, 0, 0.95);
+$bottom-sheet-zindex: 100;
+
+.af-bottom-sheet {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: $bottom-sheet-height;
+  left: 0;
+  bottom: 0;
+  background: $bottom-sheet-bg;
+  z-index: $bottom-sheet-zindex;
+
+  .bottom_sheet_link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    height: 100%;
+    width: $bottom-sheet-height;
+  }
+}

@@ -1,0 +1,8 @@
+@mixin navbar-theme-variant($bg, $color, $color-hover) {
+  background: $bg;
+  color: $color;
+
+  .navbar_menu_link {
+    color: $color;
+  }
+}

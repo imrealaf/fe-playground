@@ -1,0 +1,42 @@
+$notice-positions: ("top", "bottom");
+
+.af-notice {
+  display: none;
+  position: relative;
+  padding: $gutter/3 $gutter * 1.5;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-align: center;
+
+  .af-close {
+    position: absolute;
+    top: 50%;
+    right: $gutter/2;
+    margin-top: -$close-size/2;
+  }
+
+  // Fixed
+  &[class*="notice-fixed"] {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: $zindex-fixed;
+  }
+  @each $pos in $notice-positions {
+    &.notice-fixed-#{$pos} {
+      #{$pos}: 0;
+    }
+  }
+
+  // Theme
+  @each $theme in $themes {
+    &.notice-#{$theme} {
+      background: map-get($theme-alt-bg, $theme);
+      color: map-get($theme-alt-color, $theme);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 0.8rem;
+  }
+}

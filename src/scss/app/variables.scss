@@ -1,0 +1,177 @@
+$gutter: $grid-gutter-width;
+$primary-font: "Montserrat";
+$secondary-font: "Questrial";
+$primary-font-color: #555;
+
+/* ----------------
+    Z-index (master list)
+----------------- */
+
+$zindex-modal: 1050;
+$zindex-menu: 1050;
+$zindex-nav: 1050;
+$zindex-dropdown: 1040;
+$zindex-content: 20;
+$zindex-bg: 1;
+$zindex-burger: $zindex-nav + 1;
+$zindex-panel: $zindex-modal;
+$zindex-overlay: $zindex-modal - 1;
+$zindex-s2t: $zindex-overlay - 1;
+$zindex-fixed: $zindex-s2t - 1;
+
+/* --------------------------------
+    Close
+----------------------------------- */
+
+$close-width: 22px;
+$close-height: $close-width;
+$close-bar-width: $close-width;
+$close-bar-height: 2px;
+$close-bar-bg: $black;
+$close-bar-bg-alt: $white;
+
+/* --------------------------------
+    Panel
+----------------------------------- */
+
+$panel-bg: $black;
+$panel-color: $white;
+$panel-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+$panel-radius: 0;
+$panel-padding: $gutter;
+$panel-width: 500px;
+$panel-width-lg: 700px;
+$panel-width-sm: 300px;
+$panel-zindex: 1050;
+$panel-slide-distance: 75px;
+$panel-vertical-dimension: 100px;
+$panel-horizontal-dimension: 300px;
+
+$panel-header-height: 70px;
+$panel-header-bg: #111;
+$panel-header-color: #333;
+$panel-header-align: center;
+
+$panel-item-font-size: 0.9rem;
+$panel-item-font: $primary-font;
+$panel-item-padding: $gutter/2 $gutter;
+$panel-item-color: $panel-color;
+$panel-item-color-current: $primary;
+
+$panel-overlay-opacity: 0.5;
+$panel-overlay-bg: $white;
+
+/* --------------------------------
+    Modal
+----------------------------------- */
+
+$modal-bg: $white;
+$modal-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+$modal-radius: 0;
+$modal-padding: $gutter;
+$modal-width: 500px;
+$modal-width-lg: 700px;
+$modal-width-sm: 300px;
+$modal-zindex: $zindex-modal;
+$modal-slide-distance: 75px;
+
+$modal-overlay-opacity: 0.5;
+$modal-overlay-bg: $black;
+
+/* --------------------------------
+    Menu
+----------------------------------- */
+
+$menu-bg: $black;
+$menu-color: $white;
+$menu-padding: $gutter;
+$menu-zindex: $zindex-menu;
+$menu-slide-distance: 50px;
+$menu-item-font: $primary-font;
+$menu-item-size: 1.5rem;
+$menu-item-size-sm: 1.2rem;
+$menu-item-weight: normal;
+$menu-item-padding: $gutter/2 $gutter;
+$menu-item-color: $white;
+$menu-item-color-hover: $gray-500;
+$menu-item-color-current: $primary;
+
+// Mobile nav toggle
+$menu-toggle-padding-x: $gutter/2;
+$menu-toggle-padding-y: $gutter/1.75;
+$menu-toggle-color: $white;
+$menu-toggle-color-active: $primary;
+
+/* --------------------------------
+    Scroll to Top
+----------------------------------- */
+
+$s2t-dimension: 50px;
+$s2t-gutter: $gutter;
+$s2t-bar-length: 15px;
+$s2t-bar-width: 2px;
+$s2t-bar-color: $white;
+$s2t-bar-color-hover: $white;
+$s2t-bg: $primary;
+$s2t-bg-hover: $primary;
+$s2t-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.3);
+$s2t-shadow-hover: 0 6px 20px -6px rgba(0, 0, 0, 0.5);
+$s2t-trans-duration: 0.5s;
+
+/* --------------------------------
+    Dropdown
+----------------------------------- */
+
+$dropdown-bg: $white;
+$dropdown-zindex: 1040;
+$dropdown-min-width: 230px;
+$dropdown-min-width-sm: 200px;
+$dropdown-min-width-lg: 260px;
+$dropdown-border: 1px solid #eee;
+$dropdown-shadow: 0 0.1rem 1rem 0 rgba(0, 0, 0, 0.07);
+$dropdown-radius: 0;
+$dropdown-offset-top: 5px;
+$dropdown-offset-left: 5px;
+$dropdown-padding: $gutter / 4;
+
+$dropdown-link-font: inherit;
+$dropdown-link-fsize: 1rem;
+$dropdown-link-py: 0.5rem;
+$dropdown-link-px: 1rem;
+$dropdown-link-bg: transparent;
+$dropdown-link-bg-hover: transparent;
+$dropdown-link-bg-active: $primary;
+$dropdown-link-color: $primary-font-color;
+$dropdown-link-color-hover: $black;
+$dropdown-link-color-active: $white;
+$dropdown-link-color-disabled: $gray-300;
+
+$dropdown-header-font: $primary-font;
+$dropdown-header-fsize: 0.9rem;
+$dropdown-header-color: $black;
+$dropdown-header-py: $dropdown-link-py / 1.5;
+$dropdown-header-px: $dropdown-link-px;
+
+$dropdown-divider: 1px solid #eee;
+$dropdown-divider-margin: $dropdown-link-py;
+
+/* --------------------------------
+    Theme
+----------------------------------- */
+$themes: ("light", "dark");
+$theme-bg: (
+  light: $white,
+  dark: $black
+);
+$theme-alt-bg: (
+  light: $gray-200,
+  dark: $gray-900
+);
+$theme-color: (
+  light: $black,
+  dark: $white
+);
+$theme-alt-color: (
+  light: $gray-800,
+  dark: $gray-500
+);

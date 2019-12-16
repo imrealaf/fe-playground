@@ -1,0 +1,56 @@
+@import "../icons";
+
+$icon-size: 24px;
+$icon-sizes: (
+  xs: $icon-size / 2,
+  sm: $icon-size / 1.5,
+  lg: $icon-size * 1.5,
+  xl: $icon-size * 2
+);
+$icon-badge-size: 16px;
+$icon-badge-bg: $primary;
+$icon-badge-color: $white;
+$icon-badge-font-size: 0.6rem;
+
+.af-icon {
+  position: relative;
+  display: inline-block;
+  width: $icon-size;
+  height: $icon-size;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+
+  .icon-badge {
+    position: absolute;
+    display: block;
+    width: $icon-badge-size;
+    height: $icon-badge-size;
+    top: $icon-badge-size/4;
+    right: -$icon-badge-size/2;
+    background: $icon-badge-bg;
+    line-height: $icon-badge-size;
+    text-align: center;
+    font-size: $icon-badge-font-size;
+    font-weight: bold;
+    border-radius: $icon-badge-size;
+    letter-spacing: 0;
+    color: $icon-badge-color;
+  }
+
+  @each $size in map-keys($icon-sizes) {
+    &.icon-#{$size} {
+      width: map-get($icon-sizes, $size);
+      height: map-get($icon-sizes, $size);
+    }
+  }
+}
+
+@each $icon in $icons {
+  .icon-#{$icon}-dark {
+    background-image: url(map-get($dark-icons, $icon));
+  }
+  .icon-#{$icon}-light {
+    background-image: url(map-get($light-icons, $icon));
+  }
+}

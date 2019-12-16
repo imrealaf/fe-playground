@@ -1,0 +1,192 @@
+$navbar-height: 60px;
+$navbar-transition: all 0.3s ease;
+$navbar-bg-transition: background 0.3s ease;
+$navbar-padding: 0 $gutter;
+$navbar-padding-sm: 0 $gutter/2;
+$navbar-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+
+$navbar-logo-spacing: 15px;
+$navbar-logo-height: $navbar-height - ($navbar-logo-spacing * 2);
+
+$navbar-link-font: "Montserrat";
+$navbar-link-font-weight: 300;
+$navbar-link-letter-spacing: 2px;
+$navbar-link-font-size: 0.7rem;
+$navbar-link-transform: uppercase;
+$navbar-link-opacity-hover: 0.5;
+
+$navbar-dark-bg: $black;
+$navbar-dark-color: $white;
+$navbar-dark-color-hover: $gray-500;
+$navbar-light-bg: $white;
+$navbar-light-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+$navbar-light-color: $black;
+$navbar-light-color-hover: $gray-500;
+
+.af-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  padding: $navbar-padding;
+  z-index: 1000;
+
+  // Cols
+  > div {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    + div:not(:last-of-type) {
+      justify-content: center;
+    }
+
+    &:first-of-type {
+      justify-content: flex-start;
+    }
+
+    &:last-of-type {
+      justify-content: flex-end;
+    }
+  }
+
+  // Lists
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  // Navbar menu
+  .navbar_menu {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .navbar_menu_item {
+    + .navbar_menu_item {
+      margin-left: $gutter/2;
+
+      @include media-breakpoint-down(xs) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .navbar_menu_link {
+    display: inline-flex;
+    align-items: center;
+    padding: $gutter/4;
+    text-transform: $navbar-link-transform;
+    font-family: $navbar-link-font;
+    font-weight: $navbar-link-font-weight;
+    font-size: $navbar-link-font-size;
+    transition: $navbar-transition;
+    letter-spacing: $navbar-link-letter-spacing;
+
+    &:hover {
+      text-decoration: none;
+      opacity: $navbar-link-opacity-hover;
+
+      &.no-hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Navbar logo
+  .navbar_logo {
+    img {
+      display: block;
+      height: $navbar-logo-height;
+      width: auto;
+    }
+  }
+
+  // Themes
+  &.navbar-dark {
+    @include navbar-theme-variant(
+      $navbar-dark-bg,
+      $navbar-dark-color,
+      $navbar-dark-color-hover
+    );
+  }
+
+  &.navbar-light {
+    @include navbar-theme-variant(
+      $navbar-light-bg,
+      $navbar-light-color,
+      $navbar-light-color-hover
+    );
+  }
+
+  // Transparent
+  &.navbar-transparent {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &.navbar-light {
+      @include navbar-theme-variant(
+        $navbar-dark-bg,
+        $navbar-dark-color,
+        $navbar-dark-color-hover
+      );
+    }
+  }
+
+  // Fixed
+  &.navbar-fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  // State
+  &.has-shadow {
+    box-shadow: $navbar-shadow;
+  }
+
+  &.has-transition {
+    transition: $navbar-transition 0.2s;
+  }
+
+  &.has-bg-transition {
+    transition: $navbar-bg-transition 0.2s;
+  }
+
+  &[data-watch-bg="true"] {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  // Global state
+  .navbar-is-sticky &,
+  .navbar-sticky-is-active & {
+    position: fixed;
+    width: 100%;
+    top: 0 !important; // important to override inline styles
+    left: 0;
+    transform: translateY(-$navbar-height);
+  }
+
+  .navbar-sticky-is-active & {
+    transform: translateY(0);
+  }
+
+  // Mobile-only
+  @include media-breakpoint-down(sm) {
+    padding: $navbar-padding-sm;
+  }
+}
+
+// Sticky nav body style
+.navbar-is-sticky:not(.navbar-is-absolute),
+.navbar-sticky-is-active:not(.navbar-is-absolute) {
+  padding-top: $navbar-height;
+}

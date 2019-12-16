@@ -1,0 +1,56 @@
+/**
+ *
+ *	Close
+ * 	@author Andrew Faria
+ *
+ */
+
+$close-size: 22px;
+$close-height: $close-size;
+$close-bar-width: $close-size;
+$close-bar-height: 2px;
+$close-bar-bg: $black;
+$close-bar-bg-alt: $white;
+
+.af-close {
+  position: relative;
+  display: inline-block;
+  width: $close-size;
+  height: $close-size;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  user-select: none;
+  background: transparent;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -($close-bar-height / 2);
+    margin-left: -($close-bar-width / 2);
+    width: $close-bar-width;
+    height: $close-bar-height;
+    background: $close-bar-bg;
+    display: inline-block;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+
+  @each $theme in $themes {
+    &.close-#{$theme} {
+      &::after,
+      &::before {
+        background: map-get($theme-alt-color, $theme);
+      }
+    }
+  }
+}
